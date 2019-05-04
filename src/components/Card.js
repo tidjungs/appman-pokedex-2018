@@ -16,7 +16,7 @@ const Card = ({ card, handleSaveClick, handleDeleteClick }) => {
   const cardDetail = calculateCardDetail(card)
   return (
     <div className="card">
-      <div>
+      <div style={{ margin: '10px' }}>
         <img src={card.imageUrl} alt="" />
       </div>
       <div className="card-detail">

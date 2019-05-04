@@ -69,7 +69,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <button onClick={this.activateModal}>Add</button>
+        <div className="header">
+          <a className="modal-btn add-btn" onClick={this.activateModal}>Save Card</a>
+        </div>
         <CardListModal
           isOpen={this.state.modalOpen}
           cardData={this.state.cardData.filter(card => {
@@ -85,7 +87,7 @@ class App extends Component {
             deleteCard={this.deleteCard}
           />
         }
-      </div>
+      </div >
     )
   }
 }

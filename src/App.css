@@ -16,7 +16,8 @@
 }
 
 .saved-card-list .card {
-  width: 50%;
+  width: 48%;
+  margin: 10px;
 }
 
 .card-detail {
@@ -50,4 +51,13 @@
 
 .add-btn:hover {
   opacity: 0.5;
+}
+
+.modal-btn {
+  font-size: 30px;
+}
+
+.header {
+  text-align: center;
+  background: #f3701a;
 }
