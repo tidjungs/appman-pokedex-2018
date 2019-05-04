@@ -12,7 +12,7 @@ const calculateCardDetail = (card) => {
   }
 }
 
-const Card = ({ card }) => {
+const Card = ({ card, handleSaveClick }) => {
   const cardDetail = calculateCardDetail(card)
   return (
     <div className="card">
@@ -48,6 +48,9 @@ const Card = ({ card }) => {
           }
         </div>
       </div>
+      {
+        handleSaveClick && <a className="add-btn" onClick={handleSaveClick}>ADD</a>
+      }
     </div>
   )
 }

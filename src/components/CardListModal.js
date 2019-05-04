@@ -17,7 +17,7 @@ const customStyles = {
   }
 }
 
-const CardListModal = ({ isOpen, cardData, closeModal }) => (
+const CardListModal = ({ isOpen, cardData, closeModal, saveCard }) => (
   <Modal
     isOpen={isOpen}
     onRequestClose={closeModal}
@@ -26,7 +26,7 @@ const CardListModal = ({ isOpen, cardData, closeModal }) => (
   >
     <div className="card-list">
       {
-        cardData.map(card => <Card key={card.id} card={card} />)
+        cardData.map(card => <Card key={card.id} card={card} handleSaveClick={saveCard(card)} />)
       }
     </div>
   </Modal>

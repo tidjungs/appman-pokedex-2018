@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Card from './components/Card'
 import CardListModal from './components/CardListModal'
+import SavedCardList from './components/SavedCardList'
 import './App.css'
 
 const COLORS = {
@@ -21,10 +21,24 @@ class App extends Component {
   state = {
     cardData: [],
     modalOpen: false,
+    savedCards: [],
 
   }
   async componentDidMount() {
     this.loadCardData()
+  }
+
+
+
+  saveCard = (card) => () => {
+    const savedCards = this.state.savedCards
+    // check unique
+    const cardExited = savedCards.filter(c => c.id === card.id).length === 0 ? false : true
+    if (!cardExited) {
+      this.setState({
+        savedCards: [...savedCards, card]
+      })
+    }
   }
 
   loadCardData = async () => {
@@ -55,7 +69,11 @@ class App extends Component {
           isOpen={this.state.modalOpen}
           cardData={this.state.cardData}
           closeModal={this.closeModal}
+          saveCard={this.saveCard}
         />
+        {
+          <SavedCardList cards={this.state.savedCards} />
+        }
       </div>
     )
   }
