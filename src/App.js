@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Card from './components/Card'
+import CardListModal from './components/CardListModal'
 import './App.css'
 
 const COLORS = {
@@ -18,7 +19,9 @@ const COLORS = {
 
 class App extends Component {
   state = {
-    cardData: []
+    cardData: [],
+    modalOpen: false,
+
   }
   async componentDidMount() {
     this.loadCardData()
@@ -32,15 +35,27 @@ class App extends Component {
     })
   }
 
+  activateModal = () => {
+    this.setState({
+      modalOpen: true
+    })
+  }
+
+  closeModal = () => {
+    this.setState({
+      modalOpen: false
+    })
+  }
+
   render() {
     return (
       <div className="App">
-        {/* <button>Add</button> */}
-        <div className="card-list">
-          {
-            this.state.cardData.map(card => <Card key={card.id} card={card} />)
-          }
-        </div>
+        <button onClick={this.activateModal}>Add</button>
+        <CardListModal
+          isOpen={this.state.modalOpen}
+          cardData={this.state.cardData}
+          closeModal={this.closeModal}
+        />
       </div>
     )
   }
