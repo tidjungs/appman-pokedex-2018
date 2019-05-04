@@ -39,7 +39,7 @@
 }
 
 .cute-img {
-  width: 40px;
+  width: 32px;
   margin-right: 5px;
 }
 
@@ -60,4 +60,9 @@
 .header {
   text-align: center;
   background: #f3701a;
+}
+
+.search-box {
+  width: 80%;
+  margin: 10px;
 }

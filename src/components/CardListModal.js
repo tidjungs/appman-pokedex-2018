@@ -17,13 +17,22 @@ const customStyles = {
   }
 }
 
-const CardListModal = ({ isOpen, cardData, closeModal, saveCard }) => (
+const CardListModal = ({ isOpen, cardData, closeModal, saveCard, searchText, changeSearchText, searchClick }) => (
   <Modal
     isOpen={isOpen}
     onRequestClose={closeModal}
     style={customStyles}
     contentLabel="Example Modal"
   >
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <input
+        className="search-box"
+        type="text"
+        value={searchText}
+        onChange={changeSearchText}
+      />
+      <a className="add-btn" onClick={searchClick}>Search</a>
+    </div>
     <div className="card-list">
       {
         cardData.map(card => <Card key={card.id} card={card} handleSaveClick={saveCard(card)} />)

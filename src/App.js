@@ -22,6 +22,7 @@ class App extends Component {
     cardData: [],
     modalOpen: false,
     savedCards: [],
+    searchText: "",
 
   }
   async componentDidMount() {
@@ -46,6 +47,14 @@ class App extends Component {
     }
   }
 
+  searchClick = async () => {
+    const response = await fetch(`http://localhost:3030/api/cards?name=${this.state.searchText}`)
+    const cardData = await response.json()
+    this.setState({
+      cardData: cardData.cards
+    })
+  }
+
   loadCardData = async () => {
     const response = await fetch('http://localhost:3030/api/cards')
     const cardData = await response.json()
@@ -66,6 +75,12 @@ class App extends Component {
     })
   }
 
+  changeSearchText = (e) => {
+    this.setState({
+      searchText: e.target.value
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -80,6 +95,9 @@ class App extends Component {
           })}
           closeModal={this.closeModal}
           saveCard={this.saveCard}
+          searchText={this.state.searchText}
+          changeSearchText={this.changeSearchText}
+          searchClick={this.searchClick}
         />
         {
           <SavedCardList
