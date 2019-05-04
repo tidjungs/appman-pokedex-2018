@@ -72,7 +72,10 @@ class App extends Component {
         <button onClick={this.activateModal}>Add</button>
         <CardListModal
           isOpen={this.state.modalOpen}
-          cardData={this.state.cardData}
+          cardData={this.state.cardData.filter(card => {
+            const saveIdList = this.state.savedCards.map(sc => sc.id)
+            return !saveIdList.includes(card.id)
+          })}
           closeModal={this.closeModal}
           saveCard={this.saveCard}
         />
