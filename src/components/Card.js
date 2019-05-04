@@ -12,7 +12,7 @@ const calculateCardDetail = (card) => {
   }
 }
 
-const Card = ({ card, handleSaveClick }) => {
+const Card = ({ card, handleSaveClick, handleDeleteClick }) => {
   const cardDetail = calculateCardDetail(card)
   return (
     <div className="card">
@@ -49,7 +49,10 @@ const Card = ({ card, handleSaveClick }) => {
         </div>
       </div>
       {
-        handleSaveClick && <a className="add-btn" onClick={handleSaveClick}>ADD</a>
+        handleSaveClick && <a className="add-btn" onClick={handleSaveClick}>Add</a>
+      }
+      {
+        handleDeleteClick && <a className="add-btn" onClick={handleDeleteClick}>X</a>
       }
     </div>
   )

@@ -8,6 +8,7 @@ const ProgressBar = ({
       <p>{title}</p>
       <Line
         style={{
+          marginLeft: '20px',
           width: '80%'
         }}
         percent={percent}

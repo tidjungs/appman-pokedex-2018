@@ -29,6 +29,11 @@ class App extends Component {
   }
 
 
+  deleteCard = (card) => () => {
+    this.setState({
+      savedCards: this.state.savedCards.filter(c => c.id !== card.id)
+    })
+  }
 
   saveCard = (card) => () => {
     const savedCards = this.state.savedCards
@@ -72,7 +77,10 @@ class App extends Component {
           saveCard={this.saveCard}
         />
         {
-          <SavedCardList cards={this.state.savedCards} />
+          <SavedCardList
+            cards={this.state.savedCards}
+            deleteCard={this.deleteCard}
+          />
         }
       </div>
     )

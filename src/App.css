@@ -1,5 +1,6 @@
 .card {
   display: flex;
+  background-color: #f3f4f7;
 }
 
 .card-list {
@@ -37,7 +38,7 @@
 }
 
 .cute-img {
-  width: 30px;
+  width: 40px;
   margin-right: 5px;
 }
 
