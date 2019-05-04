@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Card from './components/Card'
 import './App.css'
 
 const COLORS = {
@@ -16,9 +17,30 @@ const COLORS = {
 }
 
 class App extends Component {
+  state = {
+    cardData: []
+  }
+  async componentDidMount() {
+    this.loadCardData()
+  }
+
+  loadCardData = async () => {
+    const response = await fetch('http://localhost:3030/api/cards')
+    const cardData = await response.json()
+    this.setState({
+      cardData: cardData.cards
+    })
+  }
+
   render() {
     return (
       <div className="App">
+        {/* <button>Add</button> */}
+        <div className="card-list">
+          {
+            this.state.cardData.map(card => <Card key={card.id} card={card} />)
+          }
+        </div>
       </div>
     )
   }
